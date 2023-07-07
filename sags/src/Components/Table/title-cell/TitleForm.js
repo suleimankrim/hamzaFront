@@ -3,6 +3,7 @@ import Style from "../body-cell/Cell.module.css";
 import secondStyle from "../body-cell/IdCell.module.css";
 import { useFormik } from "formik";
 export const TitleForm = ({ name, index }) => {
+  // console.log("lol");
   const formik = useFormik({
     initialValues: {
       cellValue: name,

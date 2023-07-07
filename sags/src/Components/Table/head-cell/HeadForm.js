@@ -4,7 +4,7 @@ import Style from "../body-cell/IdCell.module.css";
 import { useFormik } from "formik";
 import SettingDrop from "./SettingDrop";
 export const HeadForm = ({ name }) => {
-  
+  // console.log("lol");
   const formik = useFormik({
     initialValues: {
         cellValue :name,
@@ -20,7 +20,7 @@ export const HeadForm = ({ name }) => {
     <input type="text" name="cellValue" id ="cellValue"
     value={formik.values.cellValue}
      onChange={formik.handleChange} className={Style.IdCell}
-     ></input></div></div>
+     on onBlur={console.log(name)}></input></div></div>
   );
 };
 export default HeadForm;
