@@ -2,19 +2,29 @@ import React from "react";
 import Style from "./Cell.module.css";
 import { useFormik } from "formik";
 import secondStyle from "./IdCell.module.css";
-import data from "../MockData";
+import {data} from "../MockData";
 import axios from "axios";
-const filds = Object.keys(data[0]);
+
 export const CellForm = ({ row, index }) => {
+  console.log(data[row.id-data[1].id]);
+  console.log(row.id-data[1].id);
+  const filds = Object.keys(data[row.id-data[1].id+1]);
   // console.log("lol");
   // console.log(row[filds[index]]);
   const formik = useFormik({
     initialValues: {
-      cellValue: row[filds[index]],
-    },
+      cellValue: filds.length <=index ? (
+       ""
+      ) : ( 
+       row[filds[index]]),
+    }
+    // initialValues:{
+    // cellValue: row[filds[index]]}
+   
   });
 
   return (
+    
     <input
       type="text"
       name="cellValue"
