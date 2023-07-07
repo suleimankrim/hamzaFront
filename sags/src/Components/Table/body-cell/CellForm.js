@@ -35,10 +35,10 @@ export const CellForm = ({ row, index }) => {
         row[filds[index]] = formik.values.cellValue;
         console.log(row.id);
         try {
-          await axios.put(`http://localhost:8080/table/id?id=${row.id}`, {
+          await axios.post(`http://localhost:8080/cell/id?row=${row.id}?col=${index}`, {
             // JSON body data
-            title: row.title,
-            year: row.year,
+            value:formik.values.cellValue,
+            
             // Add more key-value pairs as needed
           });
         } catch (error) {
