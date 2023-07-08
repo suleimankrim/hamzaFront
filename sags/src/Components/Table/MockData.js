@@ -1,5 +1,10 @@
 // 
-const data = [
+let jdata={
+lol:[],
+
+};
+let data = [
+  
   {
     id: 1,
     title: "Beetlejuice",
@@ -76,7 +81,10 @@ const data = [
     year: "1986",
   }
 ];
-
+ function set(params) {
+ data=params;
+  
+}
 // if(data.length<20 || Object.keys(data).length<8){
 // for(var i=0; i<20 ; i++){
 //     if(!data[i]){
@@ -87,4 +95,7 @@ const data = [
 //     }
 // }    
 // }
-export default data;
+export  {data};
+
+export{set};
+export default  "lol";

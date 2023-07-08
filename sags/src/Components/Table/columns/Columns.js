@@ -5,6 +5,7 @@ import { HeadForm } from "../head-cell/HeadForm";
 import { TitleForm } from "../title-cell/TitleForm";
 import Coo from "./Coo";
 import coldata from "./column";
+import SettingsState from "../../SettingsStates";
 const title =  Object.keys(data[0]);
 function timeout(delay) {
   return new Promise( res => setTimeout(res, delay) );
@@ -89,10 +90,10 @@ const columnss =new Promise( async function( myResolve, myReject){
   myResolve(
    
 alphabet.map ((al, index) => {
-
+    let settingsStates=new SettingsState(false,false,false);
     console.log("what the fuck");
     const elee={
-      name: <HeadForm name={al} key={index} />,
+      name: <HeadForm name={al} settingState={settingsStates} colId={index} key={index} />,
 
       
       cell: (row, idx, c) => (
@@ -104,7 +105,7 @@ alphabet.map ((al, index) => {
               index = {index}
             />
           ) : (
-            <CellForm row={row} index={index} key={row.id} />
+            <CellForm row={row} settingsStates={settingsStates} index={index} key={row.id} />
            
           )}
            {/* {console.log(row)}

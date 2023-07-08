@@ -3,7 +3,7 @@ import React from "react";
 import Style from "../body-cell/IdCell.module.css";
 import { useFormik } from "formik";
 import SettingDrop from "./SettingDrop";
-export const HeadForm = ({ name }) => {
+export const HeadForm = ({ name , colId,settingState}) => {
   // console.log("lol");
   const formik = useFormik({
     initialValues: {
@@ -14,7 +14,7 @@ export const HeadForm = ({ name }) => {
     height: '100%',
     width: '100%',
   }}>
-    <SettingDrop/><div style={{
+    <SettingDrop settingStates={settingState}/><div style={{
       height: '20px',
     }}>
     <input type="text" name="cellValue" id ="cellValue"
