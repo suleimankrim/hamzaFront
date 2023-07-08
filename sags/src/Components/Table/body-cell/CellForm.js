@@ -4,8 +4,9 @@ import { useFormik } from "formik";
 import secondStyle from "./IdCell.module.css";
 import {data} from "../MockData";
 import axios from "axios";
-
-export const CellForm = ({ row, index }) => {
+import TeamObserver from "../../TeamsObserver";
+export const CellForm = ({ row, index , settingsStates }) => {
+  let observer=null
   console.log(data[row.id-data[1].id]);
   console.log(row.id-data[1].id);
   const filds = Object.keys(data[row.id-data[1].id+1]);
@@ -22,7 +23,19 @@ export const CellForm = ({ row, index }) => {
     // cellValue: row[filds[index]]}
    
   });
-
+  const change = (e) => {
+    
+    if (observer === null) {
+      formik.handleChange(e);
+    }
+    else{
+      observer.notify(e);
+    }
+    
+  };
+  const forceChange=(e)=>{
+    formik.values.cellValue=e;
+  }
   return (
     
     <input
@@ -30,7 +43,7 @@ export const CellForm = ({ row, index }) => {
       name="cellValue"
       id="cellValue"
       value={formik.values.cellValue}
-      onChange={formik.handleChange }
+      onChange={change }
       onBlur={async () => {
         row[filds[index]] = formik.values.cellValue;
         console.log(row.id);
