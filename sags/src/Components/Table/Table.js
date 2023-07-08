@@ -1,12 +1,13 @@
 import DataTable from "react-data-table-component";
 import columnss from "./columns/Columns";
-import data from "./MockData";
+import {data} from "./MockData";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import TableFooter from "../Table/TableFooter/TableFooter";
 import { useState, useEffect,useRef } from "react";
 import zIndex from "@mui/material/styles/zIndex";
 import axios from "axios"
+import {set} from "./MockData"
 const customStyles = {
   rows: {
     style: {
@@ -28,6 +29,7 @@ const customStyles = {
 };
 
 export const Table = () => {
+  
   const   [ll,setll]=useState([]);
   const [colom, setColom] = useState([]);
   const [pending, setPending] = useState(true);
@@ -59,7 +61,7 @@ export const Table = () => {
         year:al.year,
         
       })})
-      if(mm.length<60){
+      if(mm.length<10){
          let newdat=[];
          const initialLen=mm.length;
          const initial =mm[mm.length-1].id;
@@ -76,13 +78,14 @@ export const Table = () => {
         
 
        }
-      setll(mm);
+       setll(mm);
       console.log(mm);
       columnss.then(function(value){setColom(value)});
       // setPokemon(response.data);
       if(isLoading===true){
         console.log("faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaak");
        columnss.then(function(value){setColom(value);
+       set(mm);
       // setColom(fol);
        
       setLoading(false)
@@ -135,7 +138,7 @@ export const Table = () => {
     <>
      
         <DataTable
-          columns={  colom}
+          columns={colom}
           dense
           data={ll}
           customStyles={customStyles}

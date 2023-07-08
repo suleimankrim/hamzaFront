@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { IconButton } from "@mui/material";
 
-export default function SettingDrop() {
+export default function SettingDrop({settingStates}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -22,8 +22,14 @@ export default function SettingDrop() {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
+    
 
     setOpen(false);
+  };
+  const createTeamHandler=(e) => {
+      settingStates.setCreateTeam(true);
+      handleClose(e);
+
   };
 
   function handleListKeyDown(event) {
@@ -102,7 +108,7 @@ export default function SettingDrop() {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={createTeamHandler}>create Team</MenuItem>
                     <MenuItem onClick={handleClose}>My account</MenuItem>
                     <MenuItem onClick={handleClose}>Logout</MenuItem>
                   </MenuList>
