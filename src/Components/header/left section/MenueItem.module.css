@@ -1,0 +1,9 @@
+.MenuItem{
+display: flex;
+flex-direction: row;
+
+
+}
+.Textcontainer{
+    margin-left:100 ;
+}

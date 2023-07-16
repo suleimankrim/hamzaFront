@@ -1,0 +1,10 @@
+.TableFooter{
+    z-index: 10000;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100px;
+    width: 10000px;
+    background-color: gray;
+    overflow: scroll;
+}
